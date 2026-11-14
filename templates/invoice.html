@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Invoice Bill</title>
+
+<style>
+body{
+    font-family:Arial;
+    background:#f4f4f4;
+    padding:30px;
+}
+
+.bill{
+    background:white;
+    width:400px;
+    margin:auto;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+}
+
+p{
+    font-size:18px;
+}
+
+.btn{
+    display:block;
+    text-align:center;
+    background:green;
+    color:white;
+    padding:10px;
+    text-decoration:none;
+    border-radius:8px;
+    margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bill">
+
+    <h2>🧾 Invoice Bill</h2>
+
+    <p><b>Order ID:</b> {{order[0]}}</p>
+    <p><b>Customer:</b> {{order[1]}}</p>
+    <p><b>Product:</b> {{order[2]}}</p>
+    <p><b>Price:</b> ₹{{order[3]}}</p>
+    <p><b>Payment:</b> {{order[5]}}</p>
+
+    <a href="/" class="btn">Back to Home</a>
+
+</div>
+
+</body>
+</html>

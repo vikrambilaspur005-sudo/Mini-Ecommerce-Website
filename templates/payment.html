@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Premium Payment</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background: linear-gradient(to right,#667eea,#764ba2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.payment-box{
+    background:white;
+    width:420px;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.3);
+    text-align:center;
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+.option{
+    border:2px solid #ddd;
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.option:hover{
+    border-color:#fb641b;
+    background:#fff3e0;
+}
+
+.hidden{
+    display:none;
+}
+
+input{
+    width:90%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+button{
+    width:95%;
+    padding:12px;
+    background:green;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
+    margin-top:15px;
+}
+</style>
+
+<script>
+function showOption(type){
+    document.getElementById("card").style.display="none";
+    document.getElementById("gpay").style.display="none";
+
+    if(type=="card"){
+        document.getElementById("card").style.display="block";
+    }
+
+    if(type=="gpay"){
+        document.getElementById("gpay").style.display="block";
+    }
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="payment-box">
+
+<h2>Select Payment Method</h2>
+
+<div class="option" onclick="showOption('cod')">💵 Cash on Delivery</div>
+
+<div class="option" onclick="showOption('gpay')">📱 Google Pay</div>
+
+<div class="option" onclick="showOption('card')">💳 Debit / Credit Card</div>
+
+<!-- GPAY -->
+<div id="gpay" class="hidden">
+    <input type="text" placeholder="Enter UPI ID">
+</div>
+
+<!-- CARD -->
+<div id="card" class="hidden">
+    <input type="text" placeholder="Card Number">
+    <input type="text" placeholder="Card Holder Name">
+    <input type="text" placeholder="Expiry Date">
+    <input type="password" placeholder="CVV">
+</div>
+
+<a href="/buy/{{id}}">
+    <button>Confirm Order</button>
+</a>
+
+</div>
+
+</body>
+</html>

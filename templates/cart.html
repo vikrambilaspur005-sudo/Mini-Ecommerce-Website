@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+
+<style>
+body{
+    background: linear-gradient(to right,#667eea,#764ba2);
+    font-family:Arial;
+    margin:0;
+}
+
+/* CONTAINER */
+.container{
+    padding:20px;
+    text-align:center;
+}
+
+h2{
+    color:white;
+}
+
+/* GRID */
+.grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+/* CARD */
+.card{
+    background:white;
+    margin:15px;
+    padding:15px;
+    border-radius:10px;
+    width:250px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* BUTTONS */
+.btn{
+    padding:6px 10px;
+    text-decoration:none;
+    color:white;
+    border-radius:5px;
+    margin:5px;
+    display:inline-block;
+}
+
+.remove{background:red;}
+.buy{background:green;}
+.home{background:#333;}
+.clear{background:#ff6f00;}
+
+/* TOTAL */
+.total{
+    margin-top:20px;
+    font-size:22px;
+    color:white;
+    font-weight:bold;
+}
+
+/* QTY */
+.qty{
+    margin:10px;
+}
+
+.qty button{
+    padding:5px 10px;
+    margin:2px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🛒 Your Cart</h2>
+
+{% if cart %}
+    {% set total = 0 %}
+
+    <div class="grid">
+
+    {% for i in cart %}
+    <div class="card">
+
+        <p><b>{{i[3]}}</b></p>
+<p>₹{{i[4]}}</p>
+
+        <!-- quantity UI -->
+        <div class="qty">
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+        </div>
+
+        <!-- subtotal -->
+        <p>Subtotal: ₹{{i[4]}}</p>
+
+        {% set total = total + (i[4]|int) %}
+
+        <a href="/remove/{{i[0]}}" class="btn remove">Remove</a>
+        <a href="/payment/{{i[2]}}" class="btn buy">Buy</a>
+
+    </div>
+    {% endfor %}
+
+    </div>
+
+    <!-- TOTAL -->
+    <div class="total">
+        Total: ₹{{total}}
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <br>
+    <a href="/buy_all" class="btn buy">
+    Buy All
+</a>
+    <a href="/" class="btn home">⬅ Home</a>
+
+{% else %}
+    <p style="color:white;">Your cart is empty 😢</p>
+{% endif %}
+
+</div>
+
+</body>
+</html>

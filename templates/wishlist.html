@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wishlist</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background: linear-gradient(to right,#667eea,#764ba2);
+}
+
+.container{
+    padding:20px;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    margin:10px;
+    border-radius:10px;
+}
+
+h2{
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>❤️ Your Wishlist</h2>
+
+{% for i in items %}
+<div class="card">
+<p><b>{{i[0]}}</b></p>
+<p>₹{{i[1]}}</p>
+</div>
+{% endfor %}
+
+</div>
+
+</body>
+</html>
